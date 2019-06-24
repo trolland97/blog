@@ -1,0 +1,6 @@
+<%= simple_form_for @post do |f| %>
+      <%= f.input :title, label: 'Cím' %>
+      <%= f.association :categories, label: "Válassz kategóriát", as: :check_boxes %>
+      <%= f.input :content, label: 'Tartalom'  %>
+      <%= f.button :submit, 'Mehet' %>
+<% end %>

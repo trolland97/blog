@@ -1,0 +1,13 @@
+<div class="container">
+		<% @posts.each do |post| %>
+			<div class="span8">
+				<h1><%= link_to post.title, post  %></h1>
+				<p><%= post.content %></p>
+				<div>
+						<span class="badge badge-success">Posztolva <%= post.created_at %></span>
+						<span class="badge badge-success"><%= post.comments.count %> komment</span>
+				</div> 
+				<hr>
+			</div>
+		<% end %>
+</div>

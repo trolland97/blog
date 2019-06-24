@@ -1,0 +1,28 @@
+<div class="container">
+	<% if user_signed_in? %>
+		<% if @post.user_id == current_user.id %>
+			<strong>Akciók: </strong>
+			<%= link_to "Módosítás", edit_post_path(@post), class: "btn btn-xs btn-warning" %>
+			<%= link_to "Törlés", post_path(@post), method: :delete, data: { confirm: "Biztos vagy benne?" }, class: "btn btn-xs btn-danger" %>
+			<hr>
+		<% end %>
+	<% end %>	
+	<div class="breadcrumb">	
+		<strong>Cím: </strong><%= @post.title %><br>
+		<strong>Kategóriá(k): </strong>
+		<% @categories.each do |c| %>
+			<% if c == @categories.last %>
+				<%= c.name %>
+			<% else %>
+				<%= c.name %>, 
+			<% end %>
+		<% end %><br><br>
+		<%= @post.content %>
+</div>
+	<hr>
+	Kommentek (<%= @post.comments.count %>)<br><br>
+	<%= render @post.comments %>
+	<hr>
+	Kommentelj!
+	<%= render 'comments/form' %>
+</div>

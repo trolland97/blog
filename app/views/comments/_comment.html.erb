@@ -1,0 +1,10 @@
+<div class="breadcrumb">
+<%= comment.name %> írta:<br><br>
+<%= comment.comment %>
+<% if user_signed_in? %>
+<% if current_user.id == @post.user_id %>
+<hr>
+<%= link_to 'Törlés', [comment.post, comment], method: :delete, data: { confirm: 'Biztos vagy benne?' }, class: "btn btn-xs btn-danger" %>
+<% end %>
+<% end %>
+</div>
